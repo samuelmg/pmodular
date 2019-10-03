@@ -5,9 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Programas Educativos</div>
 
                 <div class="card-body">
+                  <a href="{{ route('programa.create') }}" class="btn btn-success btn-sm">Agregar Programa</a>
                     <table class="table">
                       <thead>
                         <tr><th>ID</th> <th>Programa Educativo</th> <th>Clave</th></tr>
