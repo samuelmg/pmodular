@@ -46,9 +46,9 @@ class ProgramaEducativoController extends Controller
      * @param  \App\ProgramaEducativo  $programaEducativo
      * @return \Illuminate\Http\Response
      */
-    public function show(ProgramaEducativo $programaEducativo)
+    public function show(ProgramaEducativo $programa)
     {
-        //
+        return view('programas.programaShow', compact('programa'));
     }
 
     /**
@@ -57,9 +57,9 @@ class ProgramaEducativoController extends Controller
      * @param  \App\ProgramaEducativo  $programaEducativo
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProgramaEducativo $programaEducativo)
+    public function edit(ProgramaEducativo $programa)
     {
-        //
+        return view('programas.programaForm', compact('programa'));
     }
 
     /**
@@ -69,9 +69,13 @@ class ProgramaEducativoController extends Controller
      * @param  \App\ProgramaEducativo  $programaEducativo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProgramaEducativo $programaEducativo)
+    public function update(Request $request, ProgramaEducativo $programa)
     {
-        //
+        $programa->programa = $request->programa;
+        $programa->clave = $request->clave;
+        $programa->save();
+
+        return redirect()->route('programa.show', $programa->id);
     }
 
     /**
@@ -80,8 +84,9 @@ class ProgramaEducativoController extends Controller
      * @param  \App\ProgramaEducativo  $programaEducativo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProgramaEducativo $programaEducativo)
+    public function destroy(ProgramaEducativo $programa)
     {
-        //
+        $programa->delete();
+        return redirect()->route('programa.index');
     }
 }

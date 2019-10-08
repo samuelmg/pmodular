@@ -8,15 +8,20 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <form action="{{ route('programa.store') }}" method="POST">
+                    @if(isset($programa))
+                      <form action="{{ route('programa.update', $programa->id) }}" method="POST">
+                      <input type="hidden" name="_method" value="PATCH">
+                    @else
+                      <form action="{{ route('programa.store') }}" method="POST">
+                    @endif
                       @csrf
                       <div class="form-group">
                           <label for="programa">Programa Educativo</label>
-                          <input type="text" name="programa" class="form-control" id="programa">
+                          <input type="text" name="programa" value="{{ $programa->programa ?? '' }}" class="form-control" id="programa">
                       </div>
                       <div class="form-group">
                           <label for="clave">Clave del Programa</label>
-                          <input type="text" name="clave" class="form-control" id="clave">
+                          <input type="text" name="clave" value="{{ $programa->clave ?? '' }}" class="form-control" id="clave">
                       </div>
                       <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
