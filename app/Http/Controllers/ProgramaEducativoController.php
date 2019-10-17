@@ -36,6 +36,11 @@ class ProgramaEducativoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'programa' => 'required|string|min:5|max:255',
+            'clave' => 'required|string|min:3|max:10',
+        ]);
+
         ProgramaEducativo::create($request->all());
         return redirect()->route('programa.index');
     }
@@ -71,6 +76,11 @@ class ProgramaEducativoController extends Controller
      */
     public function update(Request $request, ProgramaEducativo $programa)
     {
+        $request->validate([
+            'programa' => 'required|string|min:5|max:255',
+            'clave' => 'required|string|min:3|max:10',
+        ]);
+
         $programa->programa = $request->programa;
         $programa->clave = $request->clave;
         $programa->save();
