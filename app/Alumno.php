@@ -13,4 +13,9 @@ class Alumno extends Model
     {
         return $this->belongsTo(ProgramaEducativo::class, 'programa_educativo_id');
     }
+
+    public function proyectos()
+    {
+        return $this->belongsToMany(Proyecto::class);
+    }
 }
