@@ -17,6 +17,8 @@
 
                 </div>
             </div>
+            @include('archivos.archivoForm', ['modelo_id' => $proyecto->id, 'modelo_type' => 'App\Proyecto'])
+            @include('archivos.archivoIndex', ['archivos' => $proyecto->archivos])
         </div>
     </div>
 </div>

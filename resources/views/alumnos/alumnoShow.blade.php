@@ -26,6 +26,9 @@
                     </table>
                 </div>
             </div>
+
+            @include('archivos.archivoForm', ['modelo_id' => $alumno->id, 'modelo_type' => 'App\Alumno'])
+            @include('archivos.archivoIndex', ['archivos' => $alumno->archivos])
         </div>
     </div>
 </div>

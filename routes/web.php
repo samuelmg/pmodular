@@ -22,3 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('programa', 'ProgramaEducativoController');
 Route::resource('alumno', 'AlumnoController');
 Route::resource('proyecto', 'ProyectoController');
+
+//Manejo de Archivos
+Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
+Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
+Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
