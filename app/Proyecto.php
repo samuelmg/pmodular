@@ -12,4 +12,9 @@ class Proyecto extends Model
     {
         return $this->belongsToMany(Alumno::class);
     }
+
+    public function archivos()
+    {
+        return $this->morphMany(Archivo::class, 'modelo');
+    }
 }

@@ -18,4 +18,9 @@ class Alumno extends Model
     {
         return $this->belongsToMany(Proyecto::class);
     }
+
+    public function archivos()
+    {
+        return $this->morphMany(Archivo::class, 'modelo');
+    }
 }
