@@ -18,6 +18,10 @@
                           {!! Form::text('nombre_proyecto', null, ['class' => 'form-control']) !!}
                       </div>
                       <div class="form-group">
+                          {!! Form::label('descripcion', 'Descripción') !!}
+                          {!! Form::textarea('descripcion', null, ['class' => 'form-control', 'rows' => '5']) !!}
+                      </div>
+                      <div class="form-group">
                           {!! Form::label('alumno_id[]', 'Alumnos') !!}
                           {!! Form::select('alumno_id[]', $alumnos, $seleccionados ?? null, ['class' => 'form-control', 'multiple']) !!}
                       </div>

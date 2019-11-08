@@ -38,7 +38,13 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        $proyecto = Proyecto::create($request->only('nombre_proyecto'));
+        //Agrega user_id a $request
+        $request->merge(['user_id' => \Auth::id()]);
+
+        //Crea un nuevo proyecto con la información del formulario + user_id
+        $proyecto = Proyecto::create($request->all());
+
+        //Relaciona el proyecto con los alumnos seleccionados
         $proyecto->alumnos()->attach($request->alumno_id);
 
         return redirect()->route('proyecto.show', $proyecto->id);
@@ -79,6 +85,7 @@ class ProyectoController extends Controller
     public function update(Request $request, Proyecto $proyecto)
     {
         $proyecto->nombre_proyecto = $request->nombre_proyecto;
+        $proyecto->descripcion = $request->descripcion;
         $proyecto->save();
         $proyecto->alumnos()->sync($request->alumno_id);
 

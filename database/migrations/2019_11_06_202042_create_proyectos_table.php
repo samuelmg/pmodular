@@ -15,8 +15,15 @@ class CreateProyectosTable extends Migration
     {
         Schema::create('proyectos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('nombre_proyecto');
+            $table->text('descripcion');
+            $table->string('estatus', 30)->default('');
             $table->timestamps();
+
+            $table->foreign('user_id')
+              ->references('id')
+              ->on('users');
         });
 
         Schema::create('alumno_proyecto', function (Blueprint $table) {
