@@ -18,7 +18,11 @@
                   </tr>
                   @foreach($proyectos as $proyecto)
                     <tr>
-                      <td>{{ $proyecto->nombre_proyecto }}</td>
+                      <td>
+                          <a href="{{ route('proyecto.show', $proyecto->id) }}">
+                              {{ $proyecto->nombre_proyecto }}
+                          </a>
+                      </td>
                       <td>
                         <ul>
                         @foreach($proyecto->alumnos as $alumno)

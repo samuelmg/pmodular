@@ -15,6 +15,10 @@
                   @endforeach
                 </ul>
 
+                {!! Form::model($proyecto, ['route' => ['proyecto.destroy', $proyecto->id], 'method' => 'DELETE']) !!}
+                    {!! Form::submit('Borrar', ['class' => 'bnt btn-sm btn-danger']) !!}
+                {!! Form::close() !!}
+
                 </div>
             </div>
             @include('archivos.archivoForm', ['modelo_id' => $proyecto->id, 'modelo_type' => 'App\Proyecto'])

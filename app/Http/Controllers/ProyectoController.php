@@ -102,7 +102,8 @@ class ProyectoController extends Controller
      */
     public function destroy(Proyecto $proyecto)
     {
-        //
+        $proyecto->delete();
+        return redirect()->route('proyecto.index');
     }
 
     public function notificarProyectoAprovado(Proyecto $proyecto)

@@ -20,6 +20,7 @@ class CreateProyectosTable extends Migration
             $table->text('descripcion');
             $table->string('estatus', 30)->default('');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
               ->references('id')
