@@ -8,6 +8,7 @@
                 <div class="card-header">Listado de Proyectos</div>
 
                 <div class="card-body">
+                {{ $proyectos->links() }}
                 <table class="table">
                   <tr>
                     <th>Proyecto</th>
@@ -34,6 +35,7 @@
                     </tr>
                   @endforeach
                 </table>
+                {{ $proyectos->links() }}
                 </div>
             </div>
         </div>

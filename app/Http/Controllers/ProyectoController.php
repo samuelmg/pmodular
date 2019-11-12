@@ -17,7 +17,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::with('alumnos:id,nombre', 'user')->get();
+        $proyectos = Proyecto::with('alumnos:id,nombre', 'user')->paginate(10);
         return view('proyectos.proyectoIndex', compact('proyectos'));
     }
 
