@@ -8,18 +8,6 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-
-                    {{-- Muestra errores --}}
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
                     @if(isset($programa))
                         {!! Form::model($programa, ['route' => ['programa.update', $programa->id], 'method' => 'PATCH']) !!}
                     @else
