@@ -49,7 +49,8 @@ class ProyectoController extends Controller
         //Relaciona el proyecto con los alumnos seleccionados
         $proyecto->alumnos()->attach($request->alumno_id);
 
-        return redirect()->route('proyecto.show', $proyecto->id);
+        return redirect()->route('proyecto.show', $proyecto->id)
+            ->with(['mensaje' => 'Proyecto creado con éxito', 'tipo' => 'alert-success']);
     }
 
     /**
@@ -91,7 +92,8 @@ class ProyectoController extends Controller
         $proyecto->save();
         $proyecto->alumnos()->sync($request->alumno_id);
 
-        return redirect()->route('proyecto.show', $proyecto->id);
+        return redirect()->route('proyecto.show', $proyecto->id)
+            ->with(['mensaje' => 'Proyecto actualizado con éxito', 'tipo' => 'alert-success']);
     }
 
     /**
@@ -103,7 +105,7 @@ class ProyectoController extends Controller
     public function destroy(Proyecto $proyecto)
     {
         $proyecto->delete();
-        return redirect()->route('proyecto.index');
+        return redirect()->route('proyecto.index')->with(['mensaje' => 'Proyecto eliminado con éxito', 'tipo' => 'alert-warning']);
     }
 
     public function notificarProyectoAprovado(Proyecto $proyecto)
