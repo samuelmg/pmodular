@@ -12,6 +12,8 @@
                   <tr>
                     <th>Proyecto</th>
                     <th>Alumnos</th>
+                    <th>Usuario</th>
+                    <th>Acciones</th>
                   </tr>
                   @foreach($proyectos as $proyecto)
                     <tr>
@@ -22,6 +24,12 @@
                           <li>{{ $alumno->nombre }}</li>
                         @endforeach
                         </ul>
+                      </td>
+                      <td>
+                          {{ $proyecto->user->name }}
+                      </td>
+                      <td>
+                          <a href="{{ route('proyecto.aprovado', $proyecto->id) }}" class="btn btn-sm btn-primary">Notificar Aprovado</a>
                       </td>
                     </tr>
                   @endforeach

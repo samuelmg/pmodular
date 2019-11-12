@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('programa', 'ProgramaEducativoController');
     Route::resource('alumno', 'AlumnoController');
+    Route::get('proyecto/{proyecto}/aprovado', 'ProyectoController@notificarProyectoAprovado')->name('proyecto.aprovado');
     Route::resource('proyecto', 'ProyectoController');
 
     //Manejo de Archivos

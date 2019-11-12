@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Alumno;
 use App\Proyecto;
+use App\Mail\ProyectosAprovados;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ProyectoController extends Controller
 {
@@ -15,7 +17,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::with('alumnos:id,nombre')->get();
+        $proyectos = Proyecto::with('alumnos:id,nombre', 'user')->get();
         return view('proyectos.proyectoIndex', compact('proyectos'));
     }
 
@@ -101,5 +103,16 @@ class ProyectoController extends Controller
     public function destroy(Proyecto $proyecto)
     {
         //
+    }
+
+    public function notificarProyectoAprovado(Proyecto $proyecto)
+    {
+        //Carga los usuarios relacionados con un proyecto
+        $proyecto->load('user');
+
+        //Envía correo al usuario
+        Mail::to($proyecto->user->email)->send(new ProyectosAprovados($proyecto));
+
+        return redirect()->route('proyecto.index');
     }
 }
